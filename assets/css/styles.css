@@ -1,0 +1,22 @@
+header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+footer {
+    border-top: 4px solid #48BB78;
+}
+
+nav a {
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #2F855A;
+    text-decoration: none;
+}
