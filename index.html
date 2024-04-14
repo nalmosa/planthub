@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlantHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="css" href="./assets/css/styles.css">
 </head>
@@ -12,9 +12,32 @@
     <header class="bg-white py-6 shadow-md">
         <div class="'container mx-auto flex justify-between items-center px-6">
             <h1 class="text-3xl font-bold">🌱planthub</h1>
-            <button class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none">
+<!-- <input type="text" placeholder="please enter plant name " id = "searchByNameE1"> -->
+
+<button id="openSearchModalBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Open Search Modal
+</button>
+
+
+<div id="searchModal" class="hidden fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="shadow-sm max-w-4xl bg-white p-8 rounded-3xl border-slate-50 border">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <!-- Search input -->
+      <input type="text" id="searchInput" class="border rounded px-4 py-2 mb-4" autocomplete="off" placeholder="Search by plant name...">
+      <button id="search-btn" class="btn btn-custom-clr py-2 w-100 mt-3 mb-2">Search</button>
+      <div id="plantNameHints"></div>
+      <!-- <div id="recentSearchesContainer" class="recentSearchesModal"></div> -->
+          
+
+      <!-- Search results -->
+      
+    </div>
+  </div>
+</div>
+            <!-- <button class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none" id="openSearchModalBtn">
                 Find a plant
-            </button>
+            </button> -->
         </div>
     </header>
     <section class="py-8 px-6 text-center">
@@ -24,16 +47,25 @@
 
       <section class="py-8">
         <div class="container mx-auto px-6">
-            <h3 class="text-xl font-semibold mb-6">Today's featured plants</h3>
+            <h3 class="text-xl font-semibold mb-6">Today's Most Searched plants</h3>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+
+              
+              
                 <!-- Can use this to add for each plant -->
             </div>
-              <div class="bg-white rounded overflow-hidden shadow-md">
+            <div id="currentSearch"></div>
+            <div id="recentSearches" class="recentSearches"></div>
+              <div class="bg-white rounded overflow-hidden shadow-md" >
+                
                 <img src="" alt="Image of a plant" class="w-full">
-                <div class="px-6 py-4">
+                <!-- <div id="recentSearchesModal"></div> -->
+                
+                <!-- <div class="px-6 py-4">
+                  
                     <h4 class="font-bold mb-2">plant</h4>
                     <p class="text-gray-900 text-base">plant species</p>
-                </div>
+                </div> -->
                 <!-- plant 1 -->
               </div>  
               <div class="bg-white rounded overflow-hidden shadow-md">
@@ -77,9 +109,15 @@
 
       </section>
 
+
       <footer class="bg-green-700 text-white text-center py-4">
         <p> planthub 2024</p>
       </footer>
+      <!-- <script src="assets/js/search-model.js"></script> -->
+      <script src="assets/js/search-functions.js"></script>
+      <script src="assets/js/script.js""></script>
+      
+      <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
 
