@@ -4,11 +4,13 @@ const searchButton = document.getElementById('search-btn');
 const openSearchModalBtn = document.getElementById('openSearchModalBtn');
 // Find the search modal element
 const searchModal = document.getElementById('searchModal');
-
+const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
+const baseURL = window.location.protocol + '//' + window.location.hostname;
+const profile_page_url = baseURL + '/plant-profile.html';
 
 // Function to fetch search results from Trefle API
 async function searchPlants(query) {
-    const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
+    
     const apiUrl = `https://trefle.io/api/v1/plants/search?token=${apiKey}&q=${query}`;
     
     try {
@@ -57,39 +59,24 @@ searchInput.addEventListener('input', async function() {
     }
     
     const results = await searchPlants(query);
-    const suggestions = results.map(plant => ({ common_name: plant.common_name, scientific_name: plant.scientific_name,image_url: plant.image_url }));
+    const suggestions = results.map(plant => ({ 
+      common_name: plant.common_name, 
+      scientific_name: plant.scientific_name,
+      image_url: plant.image_url,
+      links: plant.links.plant,
+     }));
     displaySuggestions(suggestions);
 });
   
   // Add click event listener to the search button
 searchButton.addEventListener('click', handleSearch);
   
-// Function to display current search on the page
-function displayCurrentSearch() {
-    const currentSearch = JSON.parse(localStorage.getItem('currentSearch'));
-    if (currentSearch) {
-      const currentSearchElement = document.getElementById('currentSearch');
-      currentSearchElement.textContent = `Current Search: ${currentSearch.common_name || currentSearch.scientific_name || 'Unknown'}`;
-    }
-}
-  
-  // Display current search on page load
-window.addEventListener('DOMContentLoaded', function() {
-    displayCurrentSearch();
-});
- 
 // Add a click event listener to open the search modal button
 openSearchModalBtn.addEventListener('click', function() {
   // Remove the 'hidden' class from the search modal to show it
   searchModal.classList.remove('hidden');
 });
 
-// Function to close the search modal
-function closeSearchModal() {
-    const searchModal = document.getElementById('searchModal');
-    searchModal.classList.add('hidden');
-    
-  }
 
 document.addEventListener('DOMContentLoaded', renderRecentSearches);
   
