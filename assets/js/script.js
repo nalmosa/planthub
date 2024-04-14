@@ -39,7 +39,7 @@ function displaySuggestions(suggestions) {
       suggestionElement.addEventListener('click', function() {
         // Set the selected suggestion as the value of the search input field
         searchInput.value = suggestion.common_name || suggestion.scientific_name || '';
-        // Save the selected suggestion to local storage
+              // Save the selected suggestion to local storage
         localStorage.setItem('currentSearch', JSON.stringify(suggestion));
         // Clear the suggestions
         plantNameHints.innerHTML = '';
@@ -57,7 +57,7 @@ searchInput.addEventListener('input', async function() {
     }
     
     const results = await searchPlants(query);
-    const suggestions = results.map(plant => ({ common_name: plant.common_name, scientific_name: plant.scientific_name }));
+    const suggestions = results.map(plant => ({ common_name: plant.common_name, scientific_name: plant.scientific_name,image_url: plant.image_url }));
     displaySuggestions(suggestions);
 });
   
