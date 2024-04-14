@@ -108,6 +108,9 @@ openSearchModalBtn.addEventListener('click', function() {
 function closeSearchModal() {
     const searchModal = document.getElementById('searchModal');
     searchModal.classList.add('hidden');
+    
   }
+
+  document.addEventListener('DOMContentLoaded', renderRecentSearches);
   
 
