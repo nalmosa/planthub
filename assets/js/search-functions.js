@@ -6,6 +6,7 @@ function renderRecentSearches() {
     
     const recentSearches = JSON.parse(localStorage.getItem('recentSearches')) || [];
     recentSearches.forEach(search => {
+        
         const searchElement = document.createElement('div');
         searchElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'shadow-md', 'mb-4');
     
@@ -31,6 +32,13 @@ function renderRecentSearches() {
         speciesParagraph.textContent = search.scientific_name || 'Unknown species';
         speciesParagraph.classList.add('text-gray-900', 'text-base');
         contentDiv.appendChild(speciesParagraph);
+
+        // Create a link element for the plant description
+        const descriptionLinkElement = document.createElement('a');
+        descriptionLinkElement.setAttribute('href', search.link); // Set the href attribute
+        descriptionLinkElement.setAttribute('target', '_blank');
+        descriptionLinkElement.textContent = 'View Description';
+        contentDiv.appendChild(descriptionLinkElement);
     
         searchElement.appendChild(contentDiv);
       recentSearchesContainer.appendChild(searchElement);
@@ -70,29 +78,3 @@ function updateRecentSearches(search) {
   const limitedRecentSearches = recentSearches.slice(0, 5);
   localStorage.setItem('recentSearches', JSON.stringify(limitedRecentSearches));
 }
-
-
-// Function to display search results
-function displayResults(results) {
-    const plantNameHints = document.getElementById('plantNameHints');
-    plantNameHints.innerHTML = ''; // Clear previous search hints
-    
-    if (results.length === 0) {
-      plantNameHints.innerHTML = '<p>No results found.</p>';
-      return;
-    }
-    
-    results.forEach((plant, index) => {
-      if (index < 5) { // Display only the first 5 search results
-        const plantElement = document.createElement('div');
-        plantElement.classList.add('plant');
-        plantElement.innerHTML = `
-          <h3>${plant.common_name || 'Unknown'}</h3>
-          <img src="${plant.image_url}" alt="${plant.common_name || 'Plant'}" class="w-16 h-16 mr-2">
-          <p>${plant.scientific_name}</p>
-          <p>Description: <a href="${plant.link}" target="_blank" rel="noopener noreferrer">Learn more</a></p>
-        `;
-        plantNameHints.appendChild(plantElement);
-      }
-    });
-  }
