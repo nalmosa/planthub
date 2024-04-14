@@ -12,6 +12,7 @@ function renderRecentSearches() {
     
         // Create an image element for the plant image
         const imageElement = document.createElement('img');
+        imageElement.classList.add('plant_img');
         imageElement.src = search.image_url || 'assets/images/placeholder.png'; // Use a placeholder image if image_url is not available
         imageElement.alt = search.common_name || 'Plant Image';
         imageElement.classList.add('w-full1');
@@ -23,19 +24,19 @@ function renderRecentSearches() {
     
         // Create a heading element for the plant name
         const headingElement = document.createElement('h4');
-        headingElement.textContent = search.common_name || 'Unknown';
+        headingElement.textContent = "Plant Name: "+search.common_name || 'Unknown';
         headingElement.classList.add('font-bold', 'mb-2');
         contentDiv.appendChild(headingElement);
     
         // Create a paragraph element for the plant species
         const speciesParagraph = document.createElement('p');
-        speciesParagraph.textContent = search.scientific_name || 'Unknown species';
+        speciesParagraph.textContent = "Scientific Name: " +search.scientific_name || 'Unknown species';
         speciesParagraph.classList.add('text-gray-900', 'text-base');
         contentDiv.appendChild(speciesParagraph);
 
         // Create a link element for the plant description
         const descriptionLinkElement = document.createElement('a');
-        descriptionLinkElement.setAttribute('href', search.link); // Set the href attribute
+        descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank');
         descriptionLinkElement.textContent = 'View Description';
         contentDiv.appendChild(descriptionLinkElement);
@@ -50,7 +51,7 @@ function renderRecentSearches() {
 //     //renderRecentSearchesModel();
 //   });
   
-// Function to handle search button click
+// Function to handle search button click ;it will displayed current search on page
 function handleSearch() {
   const currentSearch = JSON.parse(localStorage.getItem('currentSearch'));
   if (currentSearch) {
@@ -77,4 +78,11 @@ function updateRecentSearches(search) {
   // Limit the recent searches to a certain number (e.g., 5)
   const limitedRecentSearches = recentSearches.slice(0, 5);
   localStorage.setItem('recentSearches', JSON.stringify(limitedRecentSearches));
+}
+
+// Function to close the search modal
+function closeSearchModal() {
+    const searchModal = document.getElementById('searchModal');
+    searchModal.classList.add('hidden');
+    
 }
