@@ -11,17 +11,20 @@ function renderRecentSearches() {
         searchElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'shadow-md', 'mb-4');
     
         // Create an image element for the plant image
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('plant_image','box-content', 'h-32', 'w-32', 'p-2', 'border-2');
         const imageElement = document.createElement('img');
         imageElement.classList.add('plant_img');
         imageElement.src = search.image_url || 'assets/images/placeholder.png'; // Use a placeholder image if image_url is not available
         imageElement.alt = search.common_name || 'Plant Image';
         imageElement.classList.add('w-full1');
-        searchElement.appendChild(imageElement);
+        imgDiv.appendChild(imageElement);
+        searchElement.appendChild(imgDiv);
     
         // Create a div element for the content
         const contentDiv = document.createElement('div');
         contentDiv.classList.add('px-6', 'py-4');
-    
+        contentDiv.appendChild(imgDiv);
         // Create a heading element for the plant name
         const headingElement = document.createElement('h4');
         headingElement.textContent = "Plant Name: "+search.common_name || 'Unknown';
@@ -45,13 +48,9 @@ function renderRecentSearches() {
       recentSearchesContainer.appendChild(searchElement);
     });
   }
-    
-  // Call renderRecentSearchesModal() when the page is loaded
-//   window.addEventListener('DOMContentLoaded', function() {
-//     //renderRecentSearchesModel();
-//   });
+
   
-// Function to handle search button click ;it will displayed current search on page
+// Function to handle search button click ;it will displayed current search on page and add current search to recent
 function handleSearch() {
   const currentSearch = JSON.parse(localStorage.getItem('currentSearch'));
   if (currentSearch) {
@@ -70,6 +69,7 @@ function handleSearch() {
    // renderRecentSearchesModel();
   }
 }
+
 
 // Function to update recent searches in local storage
 function updateRecentSearches(search) {
