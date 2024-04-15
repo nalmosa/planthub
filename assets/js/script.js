@@ -7,6 +7,8 @@ const searchModal = document.getElementById('searchModal');
 const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
 const baseURL = window.location.protocol + '//' + window.location.hostname;
 const profile_page_url = baseURL + '/plant-profile.html';
+const closeModalBtn = document.getElementById('closeModalBtn');
+
 
 // Function to fetch search results from Trefle API
 async function searchPlants(query) {
@@ -24,7 +26,7 @@ async function searchPlants(query) {
     }
 }
   
-  // Function to display search suggestions
+  // Function to display search text-box suggestions
 function displaySuggestions(suggestions) {
     const plantNameHints = document.getElementById('plantNameHints');
     plantNameHints.innerHTML = ''; // Clear previous search hints
@@ -59,17 +61,15 @@ searchInput.addEventListener('input', async function() {
     }
     
     const results = await searchPlants(query);
-    const suggestions = results.map(plant => ({ 
+    const plantData = results.map(plant => ({ 
       common_name: plant.common_name, 
       scientific_name: plant.scientific_name,
       image_url: plant.image_url,
       links: plant.links.plant,
      }));
-    displaySuggestions(suggestions);
+     
+    displaySuggestions(plantData);
 });
-  
-  // Add click event listener to the search button
-searchButton.addEventListener('click', handleSearch);
   
 // Add a click event listener to open the search modal button
 openSearchModalBtn.addEventListener('click', function() {
@@ -77,7 +77,10 @@ openSearchModalBtn.addEventListener('click', function() {
   searchModal.classList.remove('hidden');
 });
 
+// Add click event listener to the search button
+searchButton.addEventListener('click', handleSearch);
+
+// Close the modal when clicking the close button
+closeModalBtn.addEventListener('click', closeSearchModal);
 
 document.addEventListener('DOMContentLoaded', renderRecentSearches);
-  
-
