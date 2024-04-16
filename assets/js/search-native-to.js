@@ -72,11 +72,11 @@ function displayRecentNativeSearches(searches) {
 
         // Create a link element for the plant description
         const descriptionLinkElement = document.createElement('a');
-        descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
-        descriptionLinkElement.setAttribute('target', '_blank');
+        descriptionLinkElement.setAttribute('href', profile_page_url); // Set the href attribute
+        descriptionLinkElement.setAttribute('target', '_blank'); // Open link in a new tab
         descriptionLinkElement.textContent = 'View Description';
         textContainer.appendChild(descriptionLinkElement);
-
+        
    
     textContainer.appendChild(speciesParagraph);
     textContainer.appendChild(imageElement);
