@@ -38,6 +38,7 @@ function renderRecentSearches() {
         contentDiv.appendChild(speciesParagraph);
 
         // Create a link element for the plant description
+        
         const descriptionLinkElement = document.createElement('a');
         descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank');

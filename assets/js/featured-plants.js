@@ -36,10 +36,11 @@ function displayRandomPlants() {
           speciesParagraph.textContent = "Scientific Name: " +search.scientific_name || 'Unknown species';
           speciesParagraph.classList.add('text-gray-900', 'text-base');
           contentDiv.appendChild(speciesParagraph);
-  
+           
+         
           // Create a link element for the plant description
           const descriptionLinkElement = document.createElement('a');
-          descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
+          descriptionLinkElement.setAttribute('href',plant_profile_url); // Set the href attribute
           descriptionLinkElement.setAttribute('target', '_blank');
           descriptionLinkElement.textContent = 'View Description';
           contentDiv.appendChild(descriptionLinkElement);

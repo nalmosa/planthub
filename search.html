@@ -18,11 +18,19 @@
     <div class="modal-content">
         <!-- Search input -->
         <div class="flex flex-row items-center bg-slate-50 rounded-lg p-3 mb-8">
-            <input type="text" id="search" name="q" placeholder="Type in a plant name" class="flex grow text-xl font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800">
+            <input type="text" id="searchInput" autocomplete="off" name="q" placeholder="Type in a plant name" class="flex grow text-xl font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800">
             <!-- <div class="flex grow text-xl font-medium text-slate-300"><p></p></div> -->
-            <button class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">
+            <button  id="search-btn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">
                 Go
             </button>
+
+            <div id="plantNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md p-2"></div>
+            <!-- Search input for native-to region -->
+            <input type="text" id="nativeToInput" class="border rounded px-4 py-2 mb-4" placeholder="Search by native-to region...">
+      
+            <!-- Search button for native-to region -->
+            <button id="searchNativeToBtn" class="btn btn-custom-clr py-2 w-100 mt-3 mb-2">Search by Native To</button>
+            <!-- <div id="recentSearchesContainer" class="recentSearchesModal"></div> -->
         </div>
         <!-- Search by region -->
         <div class="searchSectionRegion mb-8">

@@ -6,7 +6,7 @@ const openSearchModalBtn = document.getElementById('openSearchModalBtn');
 const searchModal = document.getElementById('searchModal');
 const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
 const baseURL = window.location.protocol + '//' + window.location.hostname;
-const profile_page_url = baseURL + '/plant-profile.html';
+const profile_page_url = './plant-profile.html';
 const closeModalBtn = document.getElementById('closeModalBtn');
 
 
