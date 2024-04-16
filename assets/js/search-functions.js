@@ -64,9 +64,7 @@ function handleSearch() {
     // Clear the current search from local storage
     localStorage.removeItem('currentSearch');
     // Clear the search input field
-    searchInput.value = '';
-    // Close the search modal
-    closeSearchModal();
+    searchInput.value = '';    
     // Render recent searches on the page
     renderRecentSearches();
    // renderRecentSearchesModel();
