@@ -39,6 +39,7 @@ function renderRecentSearches() {
         contentDiv.appendChild(speciesParagraph);
 
         // Create a link element for the plant description
+        
         const descriptionLinkElement = document.createElement('a');
         descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank');
@@ -63,9 +64,7 @@ function handleSearch() {
     // Clear the current search from local storage
     localStorage.removeItem('currentSearch');
     // Clear the search input field
-    searchInput.value = '';
-    // Close the search modal
-    closeSearchModal();
+    searchInput.value = '';    
     // Render recent searches on the page
     renderRecentSearches();
    // renderRecentSearchesModel();
