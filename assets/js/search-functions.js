@@ -8,40 +8,42 @@ function renderRecentSearches() {
     recentSearches.forEach(search => {
         
         const searchElement = document.createElement('div');
-        searchElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'shadow-md', 'mb-4');
+        searchElement.classList.add('mb-4');
     
         // Create an image element for the plant image
         const imgDiv = document.createElement('div');
-        imgDiv.classList.add('plant_image','box-content', 'h-32', 'w-32', 'p-2', 'border-2');
+        imgDiv.classList.add('plant_image','box-content', 'h-12', 'w-12', 'mr-2');
         const imageElement = document.createElement('img');
         imageElement.classList.add('plant_img');
         imageElement.src = search.image_url || 'assets/images/placeholder.png'; // Use a placeholder image if image_url is not available
         imageElement.alt = search.common_name || 'Plant Image';
-        imageElement.classList.add('w-full1');
+        imageElement.classList.add('w-screen');
         imgDiv.appendChild(imageElement);
         searchElement.appendChild(imgDiv);
     
         // Create a div element for the content
         const contentDiv = document.createElement('div');
-        contentDiv.classList.add('px-6', 'py-4');
+        contentDiv.classList.add('flex', 'items-center', 'mb-4', 'overflow-hidden', 'rounded', 'bg-slate-50', 'hover:bg-slate-100');
         contentDiv.appendChild(imgDiv);
+
         // Create a heading element for the plant name
         const headingElement = document.createElement('h4');
-        headingElement.textContent = "Plant Name: "+search.common_name || 'Unknown';
-        headingElement.classList.add('font-bold', 'mb-2');
+        headingElement.textContent = search.common_name || 'Unknown';
+        headingElement.classList.add('font-bold', 'mr-2');
         contentDiv.appendChild(headingElement);
     
         // Create a paragraph element for the plant species
         const speciesParagraph = document.createElement('p');
-        speciesParagraph.textContent = "Scientific Name: " +search.scientific_name || 'Unknown species';
-        speciesParagraph.classList.add('text-gray-900', 'text-base');
+        speciesParagraph.textContent = search.scientific_name || 'Unknown species';
+        speciesParagraph.classList.add('text-slate-300', 'grow');
         contentDiv.appendChild(speciesParagraph);
 
         // Create a link element for the plant description
         const descriptionLinkElement = document.createElement('a');
         descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank');
-        descriptionLinkElement.textContent = 'View Description';
+        descriptionLinkElement.textContent = 'View';
+        descriptionLinkElement.classList.add('text-green-500', 'px-4', 'py-2');
         contentDiv.appendChild(descriptionLinkElement);
     
         searchElement.appendChild(contentDiv);
