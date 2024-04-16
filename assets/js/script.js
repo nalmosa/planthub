@@ -6,7 +6,7 @@ const openSearchModalBtn = document.getElementById('openSearchModalBtn');
 const searchModal = document.getElementById('searchModal');
 const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
 const baseURL = window.location.protocol + '//' + window.location.hostname;
-const profile_page_url = baseURL + '/plant-profile.html';
+const profile_page_url ='./plant-profile.html';
 const closeModalBtn = document.getElementById('closeModalBtn');
 
 
@@ -38,7 +38,7 @@ function displaySuggestions(suggestions) {
     
     suggestions.forEach(suggestion => {
       const suggestionElement = document.createElement('div');
-      suggestionElement.classList.add('suggestion');
+      suggestionElement.classList.add('suggestion', 'py-1', 'px-2', 'hover:bg-slate-100', 'rounded');
       suggestionElement.textContent = suggestion.common_name || suggestion.scientific_name || 'Unknown';
       suggestionElement.addEventListener('click', function() {
         // Set the selected suggestion as the value of the search input field
