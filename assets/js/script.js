@@ -38,7 +38,7 @@ function displaySuggestions(suggestions) {
     
     suggestions.forEach(suggestion => {
       const suggestionElement = document.createElement('div');
-      suggestionElement.classList.add('suggestion');
+      suggestionElement.classList.add('suggestion', 'py-1', 'px-2', 'hover:bg-slate-100', 'rounded');
       suggestionElement.textContent = suggestion.common_name || suggestion.scientific_name || 'Unknown';
       suggestionElement.addEventListener('click', function() {
         // Set the selected suggestion as the value of the search input field

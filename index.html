@@ -12,31 +12,32 @@
         <div class="'container mx-auto flex justify-between items-center px-6">
             <h1 class="text-3xl font-bold">🌱planthub</h1>
             
-  <button id="openSearchModalBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Open Search Modal
+  <button id="openSearchModalBtn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">
+    Find a plant
   </button>
 
 <!----------------------------------------------------->
 
   <div id="searchModal" class="hidden fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex justify-center items-center">
-    <div class="shadow-sm max-w-4xl bg-white p-8 rounded-3xl border-slate-50 border">
+    <div class="shadow-sm w-6/12 bg-white p-8 rounded-3xl border-slate-50 border">
       <!-- Modal content -->
       
       <div class="modal-content">
         <!-- Search input -->
-        <input type="text" id="searchInput" class="border rounded px-4 py-2 mb-4" autocomplete="off" placeholder="Search by plant name...">
-        <button id="search-btn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search</button>
-        <div id="plantNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md p-2"></div>
-        <!-- Search input for native-to region -->
-        <input type="text" id="nativeToInput" class="border rounded px-4 py-2 mb-4" placeholder="Search by native-to region...">
+        <div class="flex flex-row items-center bg-slate-50 rounded-lg p-3 mb-2">
+          <input type="text" id="searchInput" placeholder="Type in a plant name" class="flex grow text-xl font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800" autocomplete="off">
+         <button id="search-btn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search</button>
+        </div>
+        <!--Search results -->
+        <div id="plantNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md mb-4"></div>
 
-        <!-- Search button for native-to region -->
-        <button id="searchNativeToBtn" class="btn bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search by Native To</button>
-        <!-- <div id="recentSearchesContainerModel" class="recentSearchesModal max-h-48 overflow-y-auto border-gray-300 rounded-md p-2"></div> -->
-        <div id="recentSearches" class="recentSearches max-h-48 overflow-y-auto border-gray-300 rounded-md p-2"></div>  
+        <h3 class= "mb-2 font-medium">Recent searches</h3>
+        <div id="recentSearches" class="recentSearches items-center"></div>  
 
-        <!-- Search results -->
-        <button id="closeModalBtn" class="mt-4 bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded">Close</button>
+        <!-- Close button -->
+        <div class="flex flex-row-reverse">
+        <button id="closeModalBtn" class="text-gray-700 hover:bg-gray-100 font-semibold px-4 py-2 rounded">Close</button>
+        </div>
       </div>
     </div>
   </div>
