@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # planthub 🌱
 
 ## Description
@@ -12,3 +13,4 @@ Youtube API: https://developers.google.com/youtube/v3
 
 ## UI Library
 Tailwind: https://tailwindcss.com/
+=======

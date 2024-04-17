@@ -6,7 +6,7 @@ const openSearchModalBtn = document.getElementById('openSearchModalBtn');
 const searchModal = document.getElementById('searchModal');
 const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM'; // Trefle API key
 const baseURL = window.location.protocol + '//' + window.location.hostname;
-const profile_page_url ='./plant-profile.html';
+const profile_page_url = './plant-profile.html';
 const closeModalBtn = document.getElementById('closeModalBtn');
 
 
@@ -62,12 +62,12 @@ searchInput.addEventListener('input', async function() {
     
     const results = await searchPlants(query);
     const plantData = results.map(plant => ({ 
+      id: plant.id,      
       common_name: plant.common_name, 
       scientific_name: plant.scientific_name,
       image_url: plant.image_url,
-      links: plant.links.plant,
+      links: plant.links.plant
      }));
-     
     displaySuggestions(plantData);
 });
   
