@@ -44,43 +44,47 @@ function displayRecentNativeSearches(searches) {
     searches.forEach(search => {
 
         const plantElement = document.createElement('div');
-        plantElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'shadow-md', 'mb-4');
+        plantElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'mb-4', 'p-2', 'rounded-2xl', 'drop-shadow-sm', 'transition-transform', 'transform-gpu', 'hover:scale-105');
     
         // Create container for text content
-    const textContainer = document.createElement('div');
-    textContainer.classList.add('px-6', 'py-4');
+       const textContainer = document.createElement('div');
+       
+
         // Create image element
         const imageElement = document.createElement('img');
         imageElement.classList.add('plant_img');
         imageElement.src = search.image_url || 'assets/images/placeholder.png'; // Use a placeholder image if image_url is not available
         imageElement.alt = search.common_name || 'Plant Image';
-        imageElement.classList.add('w-full1');         
+        imageElement.classList.add('w-72', 'h-52', 'rounded-lg');         
     
         textContainer.appendChild(imageElement);
        
         // Create a heading element for the plant name
         const headingElement = document.createElement('h4');
-        headingElement.textContent = "Plant Name: "+search.common_name || 'Unknown';
-        headingElement.classList.add('font-bold', 'mb-2');
+        headingElement.textContent = search.common_name || 'Unknown';
+        headingElement.classList.add('font-bold', 'ml-1', 'mt-3');
         textContainer.appendChild(headingElement);
     
         // Create a paragraph element for the plant species
         const speciesParagraph = document.createElement('p');
-        speciesParagraph.textContent = "Scientific Name: " +search.scientific_name || 'Unknown species';
-        speciesParagraph.classList.add('text-gray-900', 'text-base');
+        speciesParagraph.textContent = search.scientific_name || 'Unknown species';
+        speciesParagraph.classList.add('text-slate-300', 'text-base', 'ml-1', 'mb-3');
         textContainer.appendChild(speciesParagraph);
 
         // Create a link element for the plant description
         const descriptionLinkElement = document.createElement('a');
         descriptionLinkElement.setAttribute('href', `${profile_page_url}?q=`+ search.id); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank'); // Open link in a new tab
-        descriptionLinkElement.textContent = 'View Description';
+        descriptionLinkElement.textContent = 'View';
+        descriptionLinkElement.classList.add('text-green-500',  'ml-1');
         textContainer.appendChild(descriptionLinkElement);
         
-   
-    textContainer.appendChild(speciesParagraph);
     textContainer.appendChild(imageElement);
+    textContainer.appendChild(headingElement);
+    textContainer.appendChild(speciesParagraph);
     textContainer.appendChild(descriptionLinkElement);
+    
+    
     // Append plant element to the DOM
     plantElement.appendChild(textContainer);
     recentSearchesContainer.appendChild(plantElement);
