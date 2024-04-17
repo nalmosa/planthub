@@ -1,12 +1,14 @@
 const recentNativeSearches = document.getElementById('recentNativeSearches');
+const nativeSearchHeading = document.getElementById('native-search-heading');
 
 // Function to handle search by native-to region with pagination
 function searchByNativeTo(page = 1, perPage = 5) {
-    const nativeToInputValue = document.getElementById('nativeToInput').value.trim() || 'Amazonas';
+    const nativeToInputValue = document.getElementById('nativeToInput').value.trim() || 'Amazons';
+    nativeSearchHeading.textContent = `🌎 Plants introduced in ${nativeToInputValue}`;
     if (!nativeToInputValue) {
       //alert('Please enter a native-to region.');
       return;
-    }   
+    }
     const apiUrl = `https://trefle.io/api/v1/plants/search?token=${apiKey}&q=${nativeToInputValue}&page=${page}`;
    
         // Perform API call to search plants by native-to region with pagination
@@ -19,17 +21,18 @@ function searchByNativeTo(page = 1, perPage = 5) {
         // Store search results in local storage
         localStorage.setItem('nativeToSearchResults', JSON.stringify(results));
         // Close the modal after successful search
-        closeSearchModal(); // Assuming you have a function to close the modal
+        closeSearchModal(); 
         // Display recent native searches on the page
         displayRecentNativeSearches(results.slice(0, 5)); // Display only the current search
         // Perform additional search based on distribution
         searchPlantsByDistribution(nativeToInputValue);
+        
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
-
+  
 // Function to search plants by distribution
 function searchPlantsByDistribution(distribution) {
   const apiUrl = `https://trefle.io/api/v1/plants?filter[distributions]=${distribution}&token=${apiKey}`;
@@ -48,7 +51,6 @@ function searchPlantsByDistribution(distribution) {
           console.error('Error:', error);
       });
 }
-  
     
 // Function to retrieve recent native searches from local storage
 function getRecentNativeSearches() {
@@ -68,8 +70,7 @@ function displayRecentNativeSearches(searches) {
         plantElement.classList.add('bg-white', 'rounded', 'overflow-hidden', 'mb-4', 'p-2', 'rounded-2xl', 'drop-shadow-sm', 'transition-transform', 'transform-gpu', 'hover:scale-105');
     
         // Create container for text content
-       const textContainer = document.createElement('div');
-       
+       const textContainer = document.createElement('div');       
 
         // Create image element
         const imageElement = document.createElement('img');
