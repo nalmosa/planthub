@@ -41,7 +41,7 @@ function renderRecentSearches() {
         // Create a link element for the plant description
         
         const descriptionLinkElement = document.createElement('a');
-        descriptionLinkElement.setAttribute('href',profile_page_url); // Set the href attribute
+        descriptionLinkElement.setAttribute('href',`${profile_page_url}?q=`+ search.id); // Set the href attribute
         descriptionLinkElement.setAttribute('target', '_blank');
         descriptionLinkElement.textContent = 'View';
         descriptionLinkElement.classList.add('text-green-500', 'px-4', 'py-2');
@@ -58,7 +58,7 @@ function handleSearch() {
   const currentSearch = JSON.parse(localStorage.getItem('currentSearch'));
   if (currentSearch) {
     // Perform the search action here
-    console.log('Searching for:', currentSearch.common_name || currentSearch.scientific_name || 'Unknown');
+    console.log('Searching for:', currentSearch.id || currentSearch.common_name || currentSearch.scientific_name || 'Unknown');
     // Update recent searches
     updateRecentSearches(currentSearch);
     // Clear the current search from local storage

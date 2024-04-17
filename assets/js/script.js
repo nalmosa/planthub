@@ -62,12 +62,12 @@ searchInput.addEventListener('input', async function() {
     
     const results = await searchPlants(query);
     const plantData = results.map(plant => ({ 
+      id: plant.id,      
       common_name: plant.common_name, 
       scientific_name: plant.scientific_name,
       image_url: plant.image_url,
-      links: plant.links.plant,
+      links: plant.links.plant
      }));
-     
     displaySuggestions(plantData);
 });
   

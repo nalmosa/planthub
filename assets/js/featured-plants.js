@@ -40,7 +40,7 @@ function displayRandomPlants() {
          
           // Create a link element for the plant description
           const descriptionLinkElement = document.createElement('a');
-          descriptionLinkElement.setAttribute('href', 'plant_profile_url'); // Set the href attribute
+          descriptionLinkElement.setAttribute('href', `${profile_page_url}?q=`+ search.id); // Set the href attribute
           descriptionLinkElement.setAttribute('target', '_blank');
           descriptionLinkElement.textContent = 'View Description';
           contentDiv.appendChild(descriptionLinkElement);
