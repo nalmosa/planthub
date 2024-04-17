@@ -2,18 +2,18 @@ const recentNativeSearches = document.getElementById('recentNativeSearches');
 
 // Function to handle search by native-to region with pagination
 function searchByNativeTo(page = 1, perPage = 5) {
-    const nativeToInputValue = document.getElementById('nativeToInput').value.trim();
+    const nativeToInputValue = document.getElementById('nativeToInput').value.trim() || 'Amazonas';
     if (!nativeToInputValue) {
       //alert('Please enter a native-to region.');
       return;
-    }
-       
+    }   
     const apiUrl = `https://trefle.io/api/v1/plants/search?token=${apiKey}&q=${nativeToInputValue}&page=${page}`;
    
         // Perform API call to search plants by native-to region with pagination
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
+        
         console.log('API Response:', data); // Log the API response
         const results = data.data || [];         
         // Store search results in local storage
@@ -22,11 +22,32 @@ function searchByNativeTo(page = 1, perPage = 5) {
         closeSearchModal(); // Assuming you have a function to close the modal
         // Display recent native searches on the page
         displayRecentNativeSearches(results.slice(0, 5)); // Display only the current search
+        // Perform additional search based on distribution
+        searchPlantsByDistribution(nativeToInputValue);
       })
       .catch(error => {
         console.error('Error:', error);
       });
   }
+
+// Function to search plants by distribution
+function searchPlantsByDistribution(distribution) {
+  const apiUrl = `https://trefle.io/api/v1/plants?filter[distributions]=${distribution}&token=${apiKey}`;
+  fetch(apiUrl)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          const plants = data.data || [];
+          //displayPlantResults(plants);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+}
   
     
 // Function to retrieve recent native searches from local storage
