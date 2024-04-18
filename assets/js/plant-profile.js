@@ -1,4 +1,4 @@
-const apiKey = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM';
+const token = '78aQpYXBfK1qA-PfQLjm31iylf5x_PaXcdCcdmvHeTM';
 const plantProfileEl = document.querySelector('#plant-profile');
 const plantNameEl = document.querySelector('#plant-name');
 const nativeFactEl = document.querySelector('#native');
@@ -74,7 +74,7 @@ function displayPlantFacts(factsData) {
 function displayPlantInformation(plantData) {
     if (plantData) {
         const plantId = plantData['data'][0]['id'];
-        const url = `https://trefle.io/api/v1/plants/${plantId}?token=${apiKey}`;
+        const url = `https://trefle.io/api/v1/plants/${plantId}?token=${token}`;
 
         // Creating h1 element for the common name of the plant
         const commonName = document.createElement('h1');
@@ -117,7 +117,7 @@ function displayPlantInformation(plantData) {
 
 // Search API for the plant information
 function searchAPI(query) {
-    const url = `https://trefle.io/api/v1/plants?token=${apiKey}&filter[scientific_name]=${query}`;
+    const url = `https://trefle.io/api/v1/plants?token=${token}&filter[scientific_name]=${query}`;
 
     fetch(url).then(response => {
         if (!response.ok) {
