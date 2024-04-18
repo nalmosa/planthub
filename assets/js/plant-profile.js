@@ -140,7 +140,7 @@ function getYTParam() {
     // ?q=Rosa%20multiflora
     const scientific_name = document.location.search.split('=').pop();
     // const scientific_name = decodeURIComponent(query);
-    fetch(`https://trefle.io/api/v1/plants?token=${apiKey}&filter[scientific_name]=${scientific_name}`)
+    fetch(`https://trefle.io/api/v1/plants?token=${token}&filter[scientific_name]=${scientific_name}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Error loading plant profile information');
