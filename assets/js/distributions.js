@@ -22,6 +22,7 @@ function setupNativeToSuggestions() {
         suggestions.forEach(suggestion => {
             const suggestionElement = document.createElement('div');
             suggestionElement.textContent = suggestion.name;
+            suggestionElement.classList.add('suggestion', 'py-1', 'px-2', 'hover:bg-slate-100', 'rounded');
             suggestionElement.addEventListener('click', () => {
                 nativeToInput.value = suggestion.name;
                 suggestionsContainer.innerHTML = ''; // Clear suggestions after selection
