@@ -17,7 +17,14 @@ function searchByNativeTo(page = 1, perPage = 5) {
       .then(data => {
         
         console.log('API Response:', data); // Log the API response
-        const results = data.data || [];         
+        const results = data.data || [];     
+        
+        if (results.length === 0) {
+          // Display a message if no results are found
+          displayNoResultsMessage('No results found.');
+          return;
+      }
+
         // Store search results in local storage
         localStorage.setItem('nativeToSearchResults', JSON.stringify(results));
         // Close the modal after successful search
@@ -113,6 +120,13 @@ function displayRecentNativeSearches(searches) {
 
     });
   }
+
+// Function to display a message when no results are found
+function displayNoResultsMessage(message) {
+  const recentSearchesContainer = document.getElementById('recentNativeSearches');
+  recentSearchesContainer.innerHTML = `<p>${message}</p>`;
+}
+
 // Event listener for search button click for native-to region
 document.getElementById('searchNativeToBtn').addEventListener('click', function() {
     searchByNativeTo(1); // Pass 1 as the default page number
