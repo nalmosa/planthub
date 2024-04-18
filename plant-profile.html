@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./assets/css/plant-profile.css">
     </head>
     <body class="font-roboto mx-auto">
@@ -15,7 +15,35 @@
                     <a href="./index.html" class="text-lg font-bold">&#127793; planthub</a>
                     </div>
                     <!-- find a plant button -->
-                    <button id="openSearchModalBtn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none"> Find a plant </button>
+                    <button id="openSearchModalBtn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">
+                        Find a plant
+                    </button>
+
+                    <!----------------------------------------------------->
+                    <div id="searchModal" class="hidden fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex justify-center items-center">
+                        <div class="shadow-sm w-6/12 bg-white p-8 rounded-3xl border-slate-50 border">
+                        <!-- Modal content -->
+                        
+                        <div class="modal-content">
+                            <!-- Search input -->
+                            <div class="flex flex-row items-center bg-slate-50 rounded-lg p-3 mb-2">
+                            <input type="text" id="searchInput" placeholder="Type in a plant name" class="flex grow text-l font-medium text-slate-400 bg-transparent focus:outline-none focus:text-slate-800" autocomplete="off">
+                            <button id="search-btn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search</button>
+                            </div>
+                            <!--Search results -->
+                            <div id="plantNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md mb-4"></div>
+
+                            <h3 class= "mb-2 font-medium">Recent searches</h3>
+                            <div id="recentSearches" class="recentSearches items-center"></div>  
+
+                            <!-- Close button -->
+                            <div class="flex flex-row-reverse">
+                            <button id="closeModalBtn" class="text-gray-700 hover:bg-gray-100 font-semibold px-4 py-2 rounded">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!--------------------------------------------------------------->
                 </div>
             </div>
         </nav>
@@ -24,15 +52,13 @@
         <div class="mx-40 mt-4 p-6 flex justify-between items-center" id="plant-profile">
             <!-- Your content here -->
             <div id="plant-name">
-                <!-- <h1 class="h1 transition-transform transform-gpu hover:scale-110" id="common-name">Snake Plant</h1> -->
-                <!-- <p class="text-gray-400" id="species-name">Sansevieria trifasciata</p> -->
+                <!-- Plant name goes here -->
             </div>
-            <!-- <img class="shadow-md transition-transform transform-gpu hover:scale-110" src="https://images.unsplash.com/photo-1547516508-e910d368d995?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Snake Plant"> -->
+            <!-- Plant image goes here -->
         </div>
         <!-- Plant description content -->
         <div class="mx-40 my-4 p-6" id="plant-description">
-            <!-- <h2 class="h2 mb-3">&#127793; Description</h2>
-            <p class="text-gray-400">Snake plants, scientifically known as Sansevieria trifasciata, are popular indoor plants renowned for their resilience and air-purifying qualities. Native to West Africa, these striking succulents feature long, upright leaves that grow in a rosette pattern, earning them the nickname "Mother-in-Law's Tongue." With their ability to thrive in low light conditions and tolerate neglect, snake plants make ideal houseplants for beginners and seasoned gardeners alike. Not only do they add a touch of greenery to any indoor space, but they also remove toxins from the air, making them a welcome addition to any home or office environment.</p> -->
+
         </div>
           <!-- Quick facts content  -->
         <div class="mx-40 my-4 p-6" id="plant-facts">
@@ -73,28 +99,27 @@
         <div class="mx-40 my-4 p-6" id="plant-videos">
             <h2 class="h2 mb-3">&#128154; How to care for your plants</h2>
             <div class="flex justify-center" id="videos-body">
-                <a href="https://www.youtube.com/watch?v=9xZ5J__Xl_4&t=1s&pp=ygUQc25ha2UgcGxhbnQgY2FyZQ%3D%3D">
+                <!-- <a href="https://www.youtube.com/watch?v=9xZ5J__Xl_4&t=1s&pp=ygUQc25ha2UgcGxhbnQgY2FyZQ%3D%3D">
                     <img src="./assets/images/6-snake-plant-care-tips.png" alt="6 snake plant care tips that you need to know!" class="transition-transform transform-gpu hover:scale-110">
                     <div class="flex mt-4">
-                        <img src="./assets/images/everything-plants-dp.png" alt="User Profile Picture">
                         <div class="mx-4 mt-3">
                             <p class="hover:text-gray-600">6 snake plant care tips that you need to know!</p>
-                            <p class="text-gray-400">Everything Plants</p>
                         </div>
                     </div>
                 </a>
                 <a href="https://www.youtube.com/watch?v=bwJqzS3eyPE&t=15s&pp=ygUQc25ha2UgcGxhbnQgY2FyZQ%3D%3D">
                     <img src="./assets/images/7-snake-plant-care-tips.png" alt="7 Snake Plant Care Tips That You Need to Know - Sansevieria Houseplant Care" class="transition-transform transform-gpu hover:scale-110">
                     <div class="flex mt-4">
-                        <img src="./assets/images/monstroFarm-dp.png" alt="User Profile Picture">
                         <div class="mx-4 mt-3">
                             <p class="hover:text-gray-600">7 Snake Plant Care Tips That You Need to Know - Sansevieria Houseplant Care</p>
-                            <p class="text-gray-400">MonstroFarm</p>
                         </div>
                     </div>
-                </a>
+                </a> -->
             </div>
         </div>
         <script src="./assets/js/plant-profile.js"></script>
+        <script src="./assets/js/search-functions.js"></script>
+        <script src="./assets/js/script.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
     </body>
 </html>
