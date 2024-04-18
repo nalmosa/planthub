@@ -66,15 +66,18 @@
       </section>
 
       <section class="py-8">
-        <div class="container mx-auto px-6 flex items-center">
+        <div class="container mx-auto px-6 items-center">
             <h3 class="text-2xl font-semibold mb-6 grow" id="native-search-heading">🌎 From your Area</h3>
             
-            <div class="flex flex-row items-center bg-slate-100 rounded-lg p-3 mb-8">
+            <div class="flex flex-row items-center bg-slate-100 rounded-lg p-3 ">
                <!-- Search input for native-to region -->
                 <input type="text" id="nativeToInput" autocomplete="off" class="flex grow text-m font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800" placeholder="Search by country">
-                <div id="DistributionsNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md mb-4"></div>
+                
                 <!-- Search button for native-to region -->
                 <button id="searchNativeToBtn" class="btn bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Go</button>
+                </div>
+                <div>
+                <div id="DistributionsNameHints" class="suggestion-box py-2 max-h-48 overflow-y-auto border-gray-300 mb-4 rounded-b-md"></div>
             </div>
         </div>
 
