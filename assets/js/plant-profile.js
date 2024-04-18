@@ -6,8 +6,6 @@ const familyNameEl = document.querySelector('#family-name');
 const averageHeightEl = document.querySelector('#average-height');
 const growthRateEl = document.querySelector('#growth-rate');
 const descriptionEl = document.querySelector('#plant-description');
-const ytAPI = "AIzaSyB1wxbpiJoa90aLYGo-ZJOoRmCGQEuM2jY";
-const videosBodyEl = document.querySelector("#videos-body");
 
 // Get scientific name parameter
 function getParam() {
@@ -134,64 +132,3 @@ function searchAPI(query) {
 }
 
 getParam();
-
-
-function getYTParam() {
-    // ?q=Rosa%20multiflora
-    const scientific_name = document.location.search.split('=').pop();
-    // const scientific_name = decodeURIComponent(query);
-    fetch(`https://trefle.io/api/v1/plants?token=${apiKey}&filter[scientific_name]=${scientific_name}`)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Error loading plant profile information');
-        }
-        return response.json();
-    }).then(data => {
-        console.log(data);
-        const searchedPlantName = `${data["data"][0]["common_name"]}`;
-
-        YTSearch(searchedPlantName);
- 
-    
-    }).catch(error => console.error('Error:', error));
-
- 
-}
-
-
-
-getYTParam();
-
-function YTSearch(name){
-    const plantNameSearched = `%22${name}+care%22`;
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${plantNameSearched}&key=${ytAPI}`)
-    .then((ytResults)=>{
-        return ytResults.json()
-    }).then((data)=>{
-        console.log(data)
-        let videos = data.items
-        let videoContainer = document.querySelector(".videosBodyEl")
-        for(video of videos){
-            const ytCard = document.createElement("a");
-            ytCard.setAttribute("href", `https://youtube.com/watch?v=${video.id.videoId}`);
-            ytCard.innerHTML += `<img src="${video.snippet.thumbnails.default.url}" class="transition-transform transform-gpu hover:scale-110">`; 
-            
-            videosBodyEl.append(ytCard)            
-            console.log(video.snippet.title);
-
-   
-            const videoTitleEl = document.createElement("div");
-            videoTitleEl.classList.add("flex", "mt-4");
-
-
-            const titleCard = document.createElement("div");
-            titleCard.classList.add("mx-4", "mt-3");
-            titleCard.innerHTML += `<p class="hover:text-gray-600">${video.snippet.title}</p>`;
-            videoTitleEl.append(titleCard);
-            ytCard.append(videoTitleEl);
-            videosBodyEl.append(ytCard);
-
-        }
-    })
-}
-
