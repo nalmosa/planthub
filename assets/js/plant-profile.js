@@ -6,6 +6,7 @@ const familyNameEl = document.querySelector('#family-name');
 const averageHeightEl = document.querySelector('#average-height');
 const growthRateEl = document.querySelector('#growth-rate');
 const descriptionEl = document.querySelector('#plant-description');
+const ytAPI = "AIzaSyB1wxbpiJoa90aLYGo-ZJOoRmCGQEuM2jY";
 
 // Get scientific name parameter
 function getParam() {
@@ -132,3 +133,48 @@ function searchAPI(query) {
 }
 
 getParam();
+
+
+function getYTParam() {
+    // ?q=Rosa%20multiflora
+    const scientific_name = document.location.search.split('=').pop();
+    // const scientific_name = decodeURIComponent(query);
+    fetch(`https://trefle.io/api/v1/plants?token=${apiKey}&filter[scientific_name]=${scientific_name}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error loading plant profile information');
+        }
+        return response.json();
+    }).then(data => {
+        console.log(data);
+        const searchedPlantName = `${data["data"][0]["common_name"]}`;
+
+        YTSearch(searchedPlantName);
+ 
+    
+    }).catch(error => console.error('Error:', error));
+
+ 
+}
+
+
+
+getYTParam();
+
+function YTSearch(name){
+    const plantNameSearched = `%22${name}+care%22`;
+    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=${plantNameSearched}&key=${ytAPI}`)
+    .then((ytResults)=>{
+        return ytResults.json()
+    }).then((data)=>{
+        console.log(data)
+        let videos = data.items
+        let videoContainer = document.querySelector(".ytContainer")
+        for(video of videos){
+            videoContainer.innerHTML += `
+                <img src="${video.snippet.thumbnails.default.url}">
+            `
+        }
+    })
+}
+

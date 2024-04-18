@@ -1,6 +1,6 @@
 
 var ytAPI = "AIzaSyB1wxbpiJoa90aLYGo-ZJOoRmCGQEuM2jY"
-//var searchedPlantName = currentSearch.commonname **Update once you have plant profile
+//var searchedPlantName = currentSearch.commonname **Update once you have plantprofile.js
 var searchedPlantName = "cactus"
 var plantNameSearched = `%22${searchedPlantName}+care%22`
 
