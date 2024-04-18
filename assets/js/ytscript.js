@@ -1,6 +1,7 @@
 
 var ytAPI = "AIzaSyB1wxbpiJoa90aLYGo-ZJOoRmCGQEuM2jY"
-var searchedPlantName = "rose"
+//var searchedPlantName = currentSearch.commonname **Update once you have plant profile
+var searchedPlantName = "cactus"
 var plantNameSearched = `%22${searchedPlantName}+care%22`
 
 
@@ -17,4 +18,3 @@ fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=
         `
     }
 })
-
