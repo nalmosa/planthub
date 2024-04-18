@@ -175,10 +175,22 @@ function YTSearch(name){
             const ytCard = document.createElement("a");
             ytCard.setAttribute("href", `https://youtube.com/watch?v=${video.id.videoId}`);
             ytCard.innerHTML += `<img src="${video.snippet.thumbnails.default.url}" class="transition-transform transform-gpu hover:scale-110">`; 
+            
+            videosBodyEl.append(ytCard)            
+            console.log(video.snippet.title);
+
+   /*        
+            const videoTitleEl = document.createElement("div");
+            videoTitleEl.classList.add("flex", "mt-4");
+
+
+            const titleCard = document.createElement("div");
+            titleCard.classList.add("mx-4", "mt-3");
+            titleCard.innerHTML += `<p class="hover:text-gray-600">${video.snippet.title}</p>`;
+            videoTitleEl.append(titleCard);
+            ytCard.append(videoTitleEl);
             videosBodyEl.append(ytCard);
-            // videoContainer.innerHTML += `
-           //     <img src="${video.snippet.thumbnails.default.url}">
-            //`
+*/ 
         }
     })
 }
