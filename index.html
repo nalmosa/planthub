@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlantHub</title>
+    <link rel="stylesheet" type="css" href="/assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="css" href="./assets/css/styles.css">
+
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-white py-6 shadow-md">
+<body class="bg-slate-50 text-gray-900">
+    <header class="bg-white py-6 shadow-sm">
         <div class="'container mx-auto flex justify-between items-center px-6">
             <h1 class="text-3xl font-bold"><a href="index.html">🌱PlantHub</a></h1>
             
@@ -25,7 +26,7 @@
       <div class="modal-content">
         <!-- Search input -->
         <div class="flex flex-row items-center bg-slate-50 rounded-lg p-3 mb-2">
-          <input type="text" id="searchInput" placeholder="Type in a plant name" class="flex grow text-xl font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800" autocomplete="off">
+          <input type="text" id="searchInput" placeholder="Type in a plant name" class="flex grow text-l font-medium text-slate-400 bg-transparent focus:outline-none focus:text-slate-800" autocomplete="off">
          <button id="search-btn" class="bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search</button>
         </div>
         <!--Search results -->
@@ -45,38 +46,39 @@
 <!--------------------------------------------------------------->
   </div>
 </header>
-    <section class="py-8 px-6 text-center">
-        <h2 class="text-2xl font-semibold">Grow your garden with PlantHub</h2>
-        <p class="mt-3">Discover different plants and how to care for them</p>
+    <section class="container mx-auto h-52 items-center my-10 content-center rounded-3xl bg-gradient-to-r from-slate-100 via-white to-slate-100 drop-shadow-sm flex overflow-hidden border border-slate-200">
+        <div class="grow">
+        <h2 class="text-4xl font-semibold ml-9">Grow your garden<br> with PlantHub</h2>
+        <p class="mt-3 text-slate-400 ml-9">Discover different plants and how to care for them</p>
+        </div>
+        <img src="assets/images/header-img-transparent.png" alt="Decorative header image of plants in pots, bird's eye view" class="w-2/3">
       </section>
 
       <section class="py-8">
         <div id="currentSearch"></div>
         <div class="container mx-auto px-6">
-            <h3 class="text-xl font-semibold mb-6">Today's Featured Plants</h3>
+            <h3 class="text-2xl font-semibold mb-6">💚 Today's Featured Plants</h3>
             <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6" id="featuredPlants">
                 <!-- Can use this to add for each plant -->
             </div>
               <!--plant 1-->
-              
         </div>
-
       </section>
-      <section clas="py-8 bg-white">
-        <div class="container mx-auto px-6">
-            <h3 class="text-xl font-semibold mb-6">🌎 From your Area</h3>
-            
-            <div class="flex justify-center mb-6">
-               <!-- Search input for native-to region -->
-        <input type="text" id="nativeToInput" class="border rounded px-4 py-2 mb-4" placeholder="Search by native-to region...">
 
-        <!-- Search button for native-to region -->
-        <button id="searchNativeToBtn" class="btn bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Search by Native To</button>
-                <!-- <nav class="flex space-x-4"> -->
-                
+      <section class="py-8">
+        <div class="container mx-auto px-6 flex items-center">
+            <h3 class="text-2xl font-semibold mb-6 grow" id="native-search-heading">🌎 From your Area</h3>
+            
+            <div class="flex flex-row items-center bg-slate-100 rounded-lg p-3 mb-8">
+               <!-- Search input for native-to region -->
+                <input type="text" id="nativeToInput" autocomplete="off" class="flex grow text-m font-medium text-slate-300 bg-transparent focus:outline-none focus:text-slate-800" placeholder="Search by country">
+                <div id="DistributionsNameHints" class="suggestion-box max-h-48 overflow-y-auto border-gray-300 rounded-md mb-4"></div>
+                <!-- Search button for native-to region -->
+                <button id="searchNativeToBtn" class="btn bg-green-500 text-white py-1 px-4 rounded hover:bg-green-700 focus:outline-none">Go</button>
             </div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6" id="recentNativeSearches">
+
+        <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 container mx-auto px-6" id="recentNativeSearches">
           <div id="searchResultsContainer"></div>
           
            
@@ -86,7 +88,7 @@
       </section>
 
 
-      <footer class="bg-green-700 text-white text-center py-4">
+      <footer class="bg-green-700 text-white text-center py-4 mt-24">
         <p> planthub 2024</p>
       </footer>
       <!-- <script src="assets/js/search-model.js"></script> -->
@@ -95,7 +97,7 @@
       
       <script src="assets/js/featured-plants.js"></script>
       <script src="assets/js/search-native-to.js"></script>
-      
+      <script src="assets/js/distributions.js"></script>
       <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
