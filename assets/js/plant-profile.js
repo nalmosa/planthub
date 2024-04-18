@@ -7,6 +7,7 @@ const averageHeightEl = document.querySelector('#average-height');
 const growthRateEl = document.querySelector('#growth-rate');
 const descriptionEl = document.querySelector('#plant-description');
 const ytAPI = "AIzaSyB1wxbpiJoa90aLYGo-ZJOoRmCGQEuM2jY";
+const videosBodyEl = document.querySelector("#videos-body");
 
 // Get scientific name parameter
 function getParam() {
@@ -169,11 +170,15 @@ function YTSearch(name){
     }).then((data)=>{
         console.log(data)
         let videos = data.items
-        let videoContainer = document.querySelector(".ytContainer")
+        let videoContainer = document.querySelector(".videosBodyEl")
         for(video of videos){
-            videoContainer.innerHTML += `
-                <img src="${video.snippet.thumbnails.default.url}">
-            `
+            const ytCard = document.createElement("a");
+            ytCard.setAttribute("href", `https://youtube.com/watch?v=${video.id.videoId}`);
+            ytCard.innerHTML += `<img src="${video.snippet.thumbnails.default.url}" class="transition-transform transform-gpu hover:scale-110">`; 
+            videosBodyEl.append(ytCard);
+            // videoContainer.innerHTML += `
+           //     <img src="${video.snippet.thumbnails.default.url}">
+            //`
         }
     })
 }
