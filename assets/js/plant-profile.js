@@ -179,7 +179,7 @@ function YTSearch(name){
             videosBodyEl.append(ytCard)            
             console.log(video.snippet.title);
 
-   /*        
+   
             const videoTitleEl = document.createElement("div");
             videoTitleEl.classList.add("flex", "mt-4");
 
@@ -190,7 +190,7 @@ function YTSearch(name){
             videoTitleEl.append(titleCard);
             ytCard.append(videoTitleEl);
             videosBodyEl.append(ytCard);
-*/ 
+
         }
     })
 }
