@@ -25,8 +25,8 @@ Tailwind: https://tailwindcss.com/
 [Deployed App Link](https://nalmosa.github.io/planthub/)
 
 ### Homepage 
-![alt text](image.jpg)
+![alt text](planthub_homepage.png)
 ### Search Page
-![alt text](image.jpg)
+![alt text](planthub_search.png)
 ### Plant Profile Page
-![alt text](image.jpg)
+![alt text](planthub_plantprofile.png)
