@@ -11,7 +11,7 @@ Amandeep Sandhu,
 Natalie Almosa,
 Michelle Bell,
 Abdulahi Mohamed,
-Catherine Delaney
+Catherine Delaney.
 
 ## API's Used
 Plant API: https://trefle.io/
@@ -35,4 +35,4 @@ Tailwind: https://tailwindcss.com/
 
 
 ### Plant Profile Page
-![alt text](./assets/images/planthub_plantprofile.png)
+![alt text](./assets/images/planthub_plantprofile.png) 
