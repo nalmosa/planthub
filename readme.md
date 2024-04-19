@@ -24,11 +24,15 @@ Tailwind: https://tailwindcss.com/
 ### Deployed Application 
 [Deployed App Link](https://nalmosa.github.io/planthub/)
 
+[GitHub](https://github.com/nalmosa/planthub?tab=readme-ov-file)
+
 ### Homepage 
-![alt text](planthub_homepage.png)
+![alt text](./assets/images/planthub_homepage.png)
+
 
 ### Search Page
-![alt text](planthub_search.png)
+![alt text](./assets/images/planthub_search.png)
+
 
 ### Plant Profile Page
-![alt text](planthub_plantprofile.png)
+![alt text](./assets/images/planthub_plantprofile.png)
